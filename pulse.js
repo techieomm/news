@@ -27,7 +27,38 @@ catBtns.forEach(btn => {
         loadNews();
     });
 });
+async function fetchNews(locationString) {
+  newsPanel.classList.add('loading');
+  newsContainer.innerHTML = '';
+  const cityName = locationString.split(',')[0]; 
+  const query = `weather ${cityName}`;
+  const url = `get-news.php?q=${encodeURIComponent(query)}`;
 
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (data.status === 'error' || data.errors) {
+      let errorMessage = data.message || (data.errors ? data.errors[0] : 'Unknown news error');
+      throw new Error(errorMessage);
+    }
+
+    if (!data.articles || data.articles.length === 0) {
+      newsContainer.innerHTML = `<div class="news-loading">No weather news found for ${cityName}.</div>`;
+      return;
+    }
+    
+    newsContainer.innerHTML = '';
+    data.articles.forEach((article, index) => {
+      newsContainer.appendChild(createNewsItem(article, index));
+    });
+  } catch (error) {
+    console.error('News fetch error:', error);
+    newsContainer.innerHTML = `<div class="news-loading">Could not load news. ${error.message}</div>`;
+  } finally {
+    newsPanel.classList.remove('loading');
+  }
+}
 searchInput.addEventListener('keyup', e => {
     searchQuery = e.target.value;
     if (searchQuery.length > 2 || searchQuery.length === 0) {
