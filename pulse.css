@@ -1,0 +1,141 @@
+:root {
+    --primary: #4f46e5;
+    --bg-body: #f8fafc;
+    --bg-card: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border: rgba(148, 163, 184, 0.2);
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background: var(--bg-body);
+    color: var(--text-main);
+}
+
+.container {
+    max-width: 1280px;
+    margin: auto;
+    padding: 0 1.5rem;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.search-bar {
+    background: var(--bg-card);
+    padding: 0.5rem 1rem;
+    border-radius: 99px;
+    display: flex;
+    gap: 0.5rem;
+    border: 1px solid var(--border);
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.categories {
+    padding: 1.5rem 0;
+}
+
+.cat-btn {
+    padding: 0.5rem 1.25rem;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    cursor: pointer;
+    margin-right: 0.5rem;
+    font-size: medium;
+    transition: background 0.3s, color 0.3s;
+}
+
+.cat-btn.active {
+    background: var(--primary);
+    color: #fff;
+}
+
+.hero {
+    margin-bottom: 2rem;
+}
+
+.hero-card {
+    height: 400px;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: #fff;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--bg-card);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+.card-title {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+.card-meta {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+} 
