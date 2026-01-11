@@ -1,6 +1,6 @@
 <?php
 // --- CONFIGURATION ---
-$apiKey = '';
+$apiKey = '29650ca2fdda94918f5359b6bd3dc5cd';
 header('Content-Type: application/json');
 
 $query = 'weather'; // Default query
